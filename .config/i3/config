@@ -1,0 +1,158 @@
+# i3 config file (v4)
+set $mod Mod4
+# Primary minimal font + Clean Korean/Jap fallback font
+font pango:Inter, Noto Sans CJK KR 10
+
+# ============================================
+# Window Theme - Minimalist Black
+# ============================================
+default_border pixel 1
+default_floating_border pixel 1
+exec_always --no-startup-id feh --bg-fill /usr/share/backgrounds/wallpaper.png
+
+# default gaps
+# gaps inner 4
+# gaps outer 4
+
+gaps inner 8
+gaps outer 8
+smart_gaps on
+
+client.focused          #333333 #1a1a1a #e0e0e0 #555555   #333333 client.focused_inactive #222222 #0a0a0a #555555 #222222   #222222 client.unfocused        #1a1a1a #0a0a0a #555555 #1a1a1a   #1a1a1a
+client.urgent           #ff4444 #ff4444 #ffffff #ff4444   #ff4444
+client.placeholder      #0a0a0a #0a0a0a #555555 #0a0a0a   #0a0a0a
+client.background       #0a0a0a
+
+# Startup Applications
+exec --no-startup-id dex --autostart --environment i3
+exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/.local/bin/i3lock-theme.sh --nofork
+exec --no-startup-id nm-applet
+exec --no-startup-id /usr/lib/xdg-desktop-portal-gtk &
+
+# Media & Hardware Controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.local/bin/vol-up.sh
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/.local/bin/vol-down.sh
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# Core Keybindings
+floating_modifier $mod
+tiling_drag modifier titlebar
+
+bindsym $mod+Return exec alacritty
+bindsym $mod+Shift+q kill
+bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons
+
+# Full screen: Save to Pictures AND copy to clipboard
+bindsym Print exec --no-startup-id maim | tee "$HOME/Pictures/screenshot-$(date +%F-%T).png" | xclip -selection clipboard -t image/png -i
+# Selected area: Save to Pictures AND copy to clipboard
+bindsym $mod+Shift+s exec --no-startup-id maim --select | tee "$HOME/Pictures/screenshot-$(date +%F-%T).png" | xclip -selection clipboard -t image/png -i
+
+# Focus & Movement
+# Change focus using Vim directions
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+# Move focused window using Shift + Vim directions
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Splits & Layouts
+bindsym $mod+b split h
+bindsym $mod+v split v
+bindsym $mod+f fullscreen toggle
+bindsym $mod+s layout stacking 
+bindsym $mod+w layout tabbed 
+bindsym $mod+e layout toggle split
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+bindsym $mod+a focus parent
+
+# Workspaces
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# System Controls
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3 session?' -B 'Yes' 'i3-msg exit'"
+bindsym $mod+shift+x exec ~/.local/bin/i3lock-theme.sh
+
+# Resize Mode
+mode "resize" {
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# Polybar & Touchpad Setup
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec --no-startup-id xinput set-prop "DELL08BC:00 04F3:30CA Touchpad" "libinput Tapping Enabled" 1
+exec --no-startup-id xinput set-prop "DELL08BC:00 04F3:30CA Touchpad" "libinput Natural Scrolling Enabled" 1
+exec --no-startup-id xinput set-prop "DELL08BC:00 04F3:30CA Touchpad" "libinput Accel Speed" 0.3
+
+# ============================================
+# Multi-Monitor Workspace Assignment (Improved Fallback)
+# ============================================
+set $monitorPrimary "eDP-1"
+set $monitorSecondary "HDMI-1"
+
+workspace 1 output $monitorPrimary
+workspace 2 output $monitorPrimary
+workspace 3 output $monitorSecondary $monitorPrimary
+workspace 4 output $monitorSecondary $monitorPrimary
+
+# Quick Cross-Monitor Container Movement
+bindsym $mod+Shift+greater move container to output right
+bindsym $mod+Shift+less move container to output left
+
+exec --no-startup-id xrandr --output HDMI-1 --mode 1920x1080 --rate 60 --right-of eDP-1 --auto 
+# Start the Polkit Authentication Agent (allows mounting without root password)
+exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+# Start Thunar in daemon mode to handle auto-mounting and hot-plugging
+exec --no-startup-id thunar --daemon

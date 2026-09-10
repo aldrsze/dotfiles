@@ -1,0 +1,13 @@
+# Ignore downloaded/installed Vim plugins and servers
+.vim/plugged/
+.vim/lsp/
+
+# Ignore Vim netrw history and swap files
+.vim/.netrwhist
+*.swp
+*.swo
+*~
+
+# Ignore OS-specific/general garbage
+.DS_Store
+Thumbs.db

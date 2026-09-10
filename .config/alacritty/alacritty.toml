@@ -1,0 +1,80 @@
+# ==============================================================================
+# Alacritty Config - Minimalist Monochromatic Theme (Matches i3 & Polybar)
+# ==============================================================================
+
+[window]
+dynamic_padding = true
+
+# Fits the clean window styling
+decorations = "none"
+startup_mode = "Windowed"
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+# ==============================================================================
+# Typography (Aligned with your Polybar and Rofi setup)
+# ==============================================================================
+[font]
+size = 10
+
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+bold = { family = "JetBrainsMono Nerd Font", style = "Bold" }
+italic = { family = "JetBrainsMono Nerd Font", style = "Italic" }
+bold_italic = { family = "JetBrainsMono Nerd Font", style = "Bold Italic" }
+
+# ==============================================================================
+# Color Palette (Extracted exactly from your @bg, @bg-alt, @fg, & @primary vars)
+# ==============================================================================
+[colors.primary]
+background = "#000000"  # Matches your core dark background (@bg)
+foreground = "#e0e0e0"  # Matches your light text (@fg)
+
+[colors.cursor]
+text = "#0a0a0a"
+cursor = "#ffffff"      # Matches your primary accent white (@primary)
+
+[colors.selection]
+text = "#ffffff"
+background = "#1a1a1a"  # Matches your alternate dark background (@bg-alt)
+
+[colors.normal]
+black   = "#0a0a0a"
+red     = "#ff4444"     # Matches your urgent red color
+green   = "#e0e0e0"
+yellow  = "#e0e0e0"
+blue    = "#e0e0e0"
+magenta = "#e0e0e0"
+cyan    = "#e0e0e0"
+white   = "#e0e0e0"
+
+[colors.bright]
+black   = "#555555"     # Matches your disabled / dim grey text
+red     = "#ff4444"
+green   = "#ffffff"
+yellow  = "#ffffff"
+blue    = "#ffffff"
+magenta = "#ffffff"
+cyan    = "#ffffff"
+white   = "#ffffff"
+
+# ==============================================================================
+# Miscellaneous Tweaks
+# ==============================================================================
+[cursor]
+# Style can specify both 'shape' and 'blinking'
+# Options for shape: "Block", "Underline", "Beam"
+# Options for blinking: "Never", "Off", "On", "Always"
+style = { shape = "Block", blinking = "Always" }
+
+# Cursor blinking interval in milliseconds (Default is 750)
+blink_interval = 750
+
+# Time in seconds after which the cursor stops blinking if inactive (0 to disable)
+blink_timeout = 10
+
+
+[mouse]
+hide_when_typing = true
+

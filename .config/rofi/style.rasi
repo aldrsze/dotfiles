@@ -1,0 +1,102 @@
+* {
+    bg:        #0a0a0a;
+    bg-alt:    #1a1a1a;
+    fg:        #e0e0e0;
+    primary:   #ffffff;
+    disabled:  #555555;
+
+    background-color: transparent;
+    text-color:       @fg;
+}
+
+window {
+    transparency:     "real";
+    location:         center;
+    anchor:           center;
+    fullscreen:       false;
+    width:            550px;
+    background-color: @bg;
+    border:           2px;
+    border-color:     @disabled;
+    border-radius:    0px;
+}
+
+mainbox {
+    spacing:          10px;
+    padding:          15px;
+    background-color: @bg;
+    children:         [ inputbar, listview ];
+}
+
+inputbar {
+    spacing:          10px;
+    padding:          10px;
+    background-color: @bg-alt;
+    border:           0px 0px 2px 0px;
+    border-color:     @primary;
+    children:         [ prompt, entry ];
+}
+
+prompt {
+    enabled:          true;
+    background-color: transparent;
+    text-color:       @primary;
+}
+
+entry {
+    background-color: transparent;
+    text-color:       @fg;
+    placeholder:      "Search applications...";
+    placeholder-color: @disabled;
+}
+
+listview {
+    enabled:          true;
+    columns:          1;
+    lines:            8;
+    cycle:            true;
+    dynamic:          true;
+    scrollbar:        false;
+    layout:           vertical;
+    reverse:          false;
+    spacing:          5px;
+    background-color: @bg;
+}
+
+element {
+    enabled:          true;
+    padding:          8px 12px;
+    background-color: transparent;
+    text-color:       @fg;
+    border-radius:    0px;
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color:       @fg;
+}
+
+element selected.normal {
+    background-color: @bg-alt;
+    text-color:       @primary;
+    border:           0px 0px 0px 2px;
+    border-color:     @primary;
+}
+
+element alternate.normal {
+    background-color: transparent;
+    text-color:       @fg;
+}
+
+element-icon {
+    background-color: transparent;
+    size:             20px;
+    cursor:           inherit;
+}
+
+element-text {
+    background-color: transparent;
+    text-color:       inherit;
+    cursor:           inherit;
+    vertical-align:   0.5;
+}
