@@ -1,4 +1,4 @@
-# aldrsze's Dotfiles
+# Dotfiles
 
 My personal configuration files for Arch Linux running i3wm.
 
