@@ -6,6 +6,16 @@ configuration {
     drun-display-format: "{name}";
     disable-history: false;
     sidebar-mode: false;
+
+    display-window: " 󰆍 ";
+    display-windowcd: " 󰆍 ";
+    display-calc: " 󰃬 ";
+    display-clipboard: " 󰅎 ";
+    display-filebrowser: " 󰉋 ";
+    display-network: " 󰤨 ";
+    display-powermenu: " 󰐥 ";
+    display-run: " 󰑔 ";
+    display-keys: " 󰌌 ";
 }
 
 @theme "style"

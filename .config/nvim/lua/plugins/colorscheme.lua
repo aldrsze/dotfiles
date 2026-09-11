@@ -6,8 +6,8 @@ return {
     require("kanagawa").setup({
       compile = false,
       undercurl = true,
-      theme = "wave",
+      theme = "dragon",
     })
-    vim.cmd.colorscheme("kanagawa")
+    vim.cmd.colorscheme("kanagawa-dragon")
   end,
 }

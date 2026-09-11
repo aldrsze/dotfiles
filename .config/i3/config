@@ -6,22 +6,23 @@ font pango:Inter, Noto Sans CJK KR 10
 # ============================================
 # Window Theme - Minimalist Black
 # ============================================
-default_border pixel 1
-default_floating_border pixel 1
-for_window [class="Alacritty"] border pixel 0, title_window_icon no
-exec_always --no-startup-id feh --bg-fill /usr/share/backgrounds/wallpaper.png
-exec_always --no-startup-id picom --backend glx --corner-radius 10
+default_border pixel 2
+default_floating_border pixel 2
+exec_always --no-startup-id feh --bg-fill ~/.local/share/backgrounds/kanagawa.jpg
+exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
 
 # default gaps
 # gaps inner 4
 # gaps outer 4
 
-gaps inner 8
-gaps outer 8
-hide_edge_borders smart
+gaps inner 4
+gaps outer 4
+hide_edge_borders none
 smart_gaps off
 
-client.focused          #333333 #1a1a1a #e0e0e0 #555555   #333333 client.focused_inactive #222222 #0a0a0a #555555 #222222   #222222 client.unfocused        #1a1a1a #0a0a0a #555555 #1a1a1a   #1a1a1a
+client.focused          #777777 #1a1a1a #e0e0e0 #777777   #555555
+client.focused_inactive #555555 #0a0a0a #777777 #555555   #555555
+client.unfocused        #555555 #0a0a0a #777777 #555555   #555555
 client.urgent           #ff4444 #ff4444 #ffffff #ff4444   #ff4444
 client.placeholder      #0a0a0a #0a0a0a #555555 #0a0a0a   #0a0a0a
 client.background       #0a0a0a
@@ -31,6 +32,7 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/.local/bin/i3lock-theme.sh --nofork
 exec --no-startup-id nm-applet
 exec --no-startup-id /usr/lib/xdg-desktop-portal-gtk &
+exec --no-startup-id ~/.config/rofi/scripts/clipboard.sh --monitor
 
 # Media & Hardware Controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.local/bin/vol-up.sh
@@ -51,6 +53,10 @@ tiling_drag modifier titlebar
 bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons
+bindsym $mod+Tab exec --no-startup-id rofi -show window -show-icons
+bindsym $mod+n exec --no-startup-id ~/.config/rofi/scripts/network.sh
+bindsym $mod+p exec --no-startup-id ~/.config/rofi/scripts/power.sh
+bindsym $mod+c exec --no-startup-id ~/.config/rofi/scripts/clipboard.sh
 
 # Full screen: Save to Pictures AND copy to clipboard
 bindsym Print exec --no-startup-id maim | tee "$HOME/Pictures/screenshot-$(date +%F-%T).png" | xclip -selection clipboard -t image/png -i

@@ -2,9 +2,6 @@
 
 local opt = vim.opt
 
-vim.g.mapleader = " "        -- Space is leader key (pressed before custom shortcuts)
-vim.g.maplocalleader = " "
-
 opt.number = true            -- show line numbers
 opt.relativenumber = true    -- relative numbers, handy for jumps (5j, 3k, etc.)
 opt.cursorline = true        -- highlight current line
