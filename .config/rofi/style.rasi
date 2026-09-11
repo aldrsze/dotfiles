@@ -1,9 +1,10 @@
 * {
-    bg:        #0a0a0a;
-    bg-alt:    #1a1a1a;
-    fg:        #e0e0e0;
-    primary:   #ffffff;
-    disabled:  #555555;
+    bg:         #0a0a0a;
+    bg-alt:     #1a1a1a;
+    accent:     #ffffff;
+    accent-fg:  #0a0a0a;
+    fg:         #e0e0e0;
+    disabled:   #555555;
 
     background-color: transparent;
     text-color:       @fg;
@@ -14,61 +15,62 @@ window {
     location:         center;
     anchor:           center;
     fullscreen:       false;
-    width:            550px;
+    width:            520px;
     background-color: @bg;
-    border:           2px;
-    border-color:     @disabled;
-    border-radius:    0px;
+    border:           0px;
+    border-radius:    18px;
 }
 
 mainbox {
-    spacing:          10px;
-    padding:          15px;
-    background-color: @bg;
+    spacing:          0px;
+    padding:          0px;
+    background-color: transparent;
     children:         [ inputbar, listview ];
 }
 
 inputbar {
     spacing:          10px;
-    padding:          10px;
-    background-color: @bg-alt;
-    border:           0px 0px 2px 0px;
-    border-color:     @primary;
+    padding:          16px 20px;
+    background-color: @accent;
+    text-color:       @accent-fg;
+    border-radius:    18px 18px 0px 0px;
     children:         [ prompt, entry ];
 }
 
 prompt {
     enabled:          true;
     background-color: transparent;
-    text-color:       @primary;
+    text-color:       @accent-fg;
 }
 
 entry {
-    background-color: transparent;
-    text-color:       @fg;
-    placeholder:      "Search applications...";
-    placeholder-color: @disabled;
+    background-color:  transparent;
+    text-color:        @accent-fg;
+    placeholder:        "Search...";
+    placeholder-color:  @accent-fg;
 }
 
 listview {
     enabled:          true;
     columns:          1;
-    lines:            8;
+    lines:            5;
     cycle:            true;
     dynamic:          true;
     scrollbar:        false;
     layout:           vertical;
     reverse:          false;
-    spacing:          5px;
+    spacing:          2px;
+    padding:          10px 8px;
     background-color: @bg;
+    border-radius:    0px 0px 18px 18px;
 }
 
 element {
     enabled:          true;
-    padding:          8px 12px;
+    padding:          12px 14px;
     background-color: transparent;
     text-color:       @fg;
-    border-radius:    0px;
+    border-radius:    10px;
 }
 
 element normal.normal {
@@ -78,9 +80,7 @@ element normal.normal {
 
 element selected.normal {
     background-color: @bg-alt;
-    text-color:       @primary;
-    border:           0px 0px 0px 2px;
-    border-color:     @primary;
+    text-color:       @accent;
 }
 
 element alternate.normal {
@@ -90,7 +90,7 @@ element alternate.normal {
 
 element-icon {
     background-color: transparent;
-    size:             20px;
+    size:             24px;
     cursor:           inherit;
 }
 

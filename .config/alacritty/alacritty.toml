@@ -5,9 +5,9 @@
 [window]
 dynamic_padding = true
 
-# Fits the clean window styling
-decorations = "none"
-startup_mode = "Windowed"
+[window.padding]
+x = 0
+y = 0
 
 [scrolling]
 history = 10000

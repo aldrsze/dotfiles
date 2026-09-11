@@ -1,17 +1,15 @@
 #!/bin/bash
-# Check active connection using nmcli
+# Show icon only when connected to wifi with working internet.
+# Empty output = polybar hides the module entirely.
+
 SSID=$(nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -d: -f2)
 
 if [ -z "$SSID" ]; then
-    echo "󰤭 offline"
-    exit
+    exit 1
 fi
 
-# Measure latency (ping Google DNS with 1 packet timeout 1s)
-LATENCY=$(ping -c 1 -W 1 8.8.8.8 2>/dev/null | grep 'time=' | awk -F 'time=' '{print $2}' | awk '{print $1}')
-
-if [ -z "$LATENCY" ]; then
-    echo "$SSID (No Inet)"
-else
-    echo "$SSID (${LATENCY}ms)"
+if ! ping -c 1 -W 1 8.8.8.8 >/dev/null 2>&1; then
+    exit 1
 fi
+
+echo " "
