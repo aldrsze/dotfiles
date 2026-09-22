@@ -44,3 +44,18 @@ opt.undofile = true          -- persistent undo across sessions
 opt.swapfile = false
 
 opt.clipboard = "unnamedplus" -- use system clipboard for yank/paste
+
+-- Manually override the clipboard provider to strictly use xclip
+vim.g.clipboard = {
+  name = 'xclip',
+  copy = {
+    ['+'] = 'xclip -selection clipboard',
+    ['*'] = 'xclip -selection primary',
+  },
+  paste = {
+    ['+'] = 'xclip -selection clipboard -o',
+    ['*'] = 'xclip -selection primary -o',
+  },
+  cache_enabled = 1,
+}
+

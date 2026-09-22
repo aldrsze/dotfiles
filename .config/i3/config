@@ -32,7 +32,7 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/.local/bin/i3lock-theme.sh --nofork
 exec --no-startup-id nm-applet
 exec --no-startup-id /usr/lib/xdg-desktop-portal-gtk &
-exec --no-startup-id ~/.config/rofi/scripts/clipboard.sh --monitor
+exec --no-startup-id greenclip daemon
 
 # Media & Hardware Controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.local/bin/vol-up.sh
@@ -56,7 +56,7 @@ bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons
 bindsym $mod+Tab exec --no-startup-id rofi -show window -show-icons
 bindsym $mod+n exec --no-startup-id ~/.config/rofi/scripts/network.sh
 bindsym $mod+p exec --no-startup-id ~/.config/rofi/scripts/power.sh
-bindsym $mod+c exec --no-startup-id ~/.config/rofi/scripts/clipboard.sh
+bindsym $mod+c exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard -config ~/.config/rofi/config.rasi -theme style
 
 # Full screen: Save to Pictures AND copy to clipboard
 bindsym Print exec --no-startup-id maim | tee "$HOME/Pictures/screenshot-$(date +%F-%T).png" | xclip -selection clipboard -t image/png -i

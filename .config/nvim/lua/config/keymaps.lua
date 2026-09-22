@@ -14,7 +14,7 @@ map("n", "<Esc>", ":noh<CR>", { desc = "Clear search highlight" })
 -- ============================================
 map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
 map("n", "<leader>cd", vim.cmd.Ex, { desc = "Open netrw file browser" })
-map("n", "<leader>w", ":w<CR>", { desc = "Save file" })
+map("n", "<C-s>", ":w<CR>", { desc = "Save file" })
 map("n", "<leader>q", ":q<CR>", { desc = "Quit" })
 
 -- ============================================

@@ -4,13 +4,15 @@
 # Stores clipboard history in ~/.cache/clipboard_history
 
 HISTORY_FILE="$HOME/.cache/clipboard_history"
+LAST_CLIP=""
 mkdir -p "$(dirname "$HISTORY_FILE")"
 
 # Add current clipboard to history
 add_to_history() {
     local content
-    content=$(xclip -selection clipboard -o 2>/dev/null)
-    if [ -n "$content" ]; then
+    content=$(xclip -selection clipboard -o </dev/null 2>/dev/null)
+    if [ -n "$content" ] && [ "$content" != "$LAST_CLIP" ]; then
+        LAST_CLIP="$content"
         # Remove duplicate entries and add to top
         local tmp=$(mktemp)
         echo "$content" > "$tmp"
@@ -27,7 +29,7 @@ add_to_history() {
 if [ "$1" = "--monitor" ]; then
     while true; do
         add_to_history
-        sleep 2
+        sleep 1
     done
     exit 0
 fi
