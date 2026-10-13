@@ -23,3 +23,10 @@ export TERM=xterm-256color
 
 # Ensure DISPLAY is available to subshells and terminal emulators
 [ -z "$DISPLAY" ] && export DISPLAY=:0
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/aldrsze/.local/bin:$PATH"
+
+export XCURSOR_SIZE=16
+export XCURSOR_THEME=Adwaita

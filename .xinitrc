@@ -1,5 +1,8 @@
 #!/bin/sh
 
+export XCURSOR_SIZE=16
+export XCURSOR_THEME=Adwaita
+
 prefix="/usr"
 exec_prefix="${prefix}"
 xrdb="xrdb"
@@ -50,4 +53,3 @@ if [ -d "$xinitdir"/xinitrc.d ] ; then
 fi
 
 exec dbus-launch --exit-with-session i3
-

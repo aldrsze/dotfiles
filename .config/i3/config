@@ -165,3 +165,5 @@ exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-ag
 
 # Start Thunar in daemon mode to handle auto-mounting and hot-plugging
 exec --no-startup-id thunar --daemon
+
+exec_always --no-startup-id xsetroot -cursor_name left_ptr
